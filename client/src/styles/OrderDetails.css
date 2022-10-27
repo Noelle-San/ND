@@ -1,0 +1,6 @@
+.orderdetails_btn_div {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+  font-family: "Poppins", sans-serif;
+}

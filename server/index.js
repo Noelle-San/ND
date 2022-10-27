@@ -14,6 +14,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use("/authuser", require("./routes/AuthRoute"));
+app.use("/admin", require("./routes/AdminRoute"));
+app.use("/products", require("./routes/ProductsRoute"));
+app.use("/user", require("./routes/OrdersRoute"));
 
 app.listen(5000, () => {
   console.log(`Backend Running At Port 5000`);

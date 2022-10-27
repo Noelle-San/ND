@@ -43,6 +43,7 @@ function Signin() {
           localStorage.setItem("TOKEN", res.data.token);
           localStorage.setItem("USERNAME", res.data.username);
           localStorage.setItem("NAME", res.data.name);
+          localStorage.setItem("EMAIL", res.data.email);
         }
         if (res.data.message === "admin") {
           // move to home

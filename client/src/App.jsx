@@ -11,6 +11,14 @@ import FavQ from "./components/FavQ";
 import Updatepass from "./components/Updatepass";
 import Navbar from './components/Navbar';
 import TopBar from "./components/TopBar";
+import AllUsers from "./components/AllUsers";
+import EditUser from "./components/EditUser";
+import AddUser from "./components/AddUser";
+import Cart from './pages/Cart';
+import CreateOrder from './pages/CreateOrder';
+import OrderDetails from './pages/OrderDetails';
+import OrderList from './pages/OrderList';
+import ProductDetails from './pages/ProductDetails';
 
 function App() {
   return (
@@ -30,6 +38,19 @@ function App() {
           <Route path="/check-answer" element={<Updatepass />} />
 
           <Route path="/otp" element={<NewSubmit />} />
+
+
+          <Route path="/all" element={<AllUsers />} />
+          <Route path="/add" element={<AddUser />} />
+          <Route path="/edit/:id" element={<EditUser />} />
+
+
+          <Route path="/orderdetails/:id" element={<OrderDetails />} />
+          <Route path="/orderlist" element={<OrderList />} />
+          <Route path="/createorder" element={<CreateOrder />} />
+          <Route path="/productdetails/:id" element={<ProductDetails />} />
+          <Route path="/cart" element={<Cart />} />
+
         </Routes>
       </Router>
     </div>

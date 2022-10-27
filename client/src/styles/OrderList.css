@@ -1,0 +1,49 @@
+.basic-multi-select {
+  width: 200px;
+}
+
+.dropdown_parent {
+  display: flex;
+  justify-content: space-between;
+}
+
+.orderdetails_parent {
+  display: flex;
+  justify-content: space-between;
+}
+
+.table-container table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table thead {
+  background-color: #bbb;
+}
+
+table th,
+table td {
+  padding: 10px;
+  text-align: left;
+  min-width: 150px;
+  user-select: none;
+}
+
+table th {
+  color: #121212;
+}
+
+tr {
+  border-bottom: 1px solid #bbb;
+}
+
+.orderlist_parent {
+  margin-top: 2rem;
+  border-radius: 10px;
+}
+
+.orderlist_header_div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

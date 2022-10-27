@@ -66,6 +66,7 @@ router.post("/signin", async (req, res) => {
           res.send({
             name: result.name,
             username: result.username,
+            email: result.email,
             code: 200,
             message: "user",
             token: "hfgdhg",

@@ -1,41 +1,22 @@
+// product schema
 const mongoose = require("mongoose");
 
-const UserSchema = new mongoose.Schema(
+const OrderSchema = new mongoose.Schema(
   {
-    type: String,
-    name: {
-      type: String,
-    },
     email: {
       type: String,
       required: true,
     },
-    age: {
+    totalcost: {
+      type: Number,
+    },
+    shipmentdate: {
       type: String,
     },
-    sex: {
+    creationdate: {
       type: String,
     },
-    location: {
-      type: String,
-    },
-    phone: {
-      type: String,
-    },
-    username: {
-      type: String,
-    },
-    password: {
-      type: String,
-    },
-    secretQ: {
-      type: String,
-    },
-    secretA: {
-      type: String,
-    },
-
-    cartproducts: [
+    products: [
       {
         productid: {
           type: String,
@@ -60,9 +41,14 @@ const UserSchema = new mongoose.Schema(
         },
       },
     ],
+    status: {
+      type: String,
+      default: "Pending",
+    },
   },
   { timetamps: true }
 );
 
 // module.exports = mongoose.models.Users || mongoose.model("Users", UserSchema);
-module.exports = mongoose.models.User || mongoose.model("User", UserSchema);
+module.exports =
+  mongoose.models.orders || mongoose.model("orders", OrderSchema);
