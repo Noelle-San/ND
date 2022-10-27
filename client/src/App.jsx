@@ -9,15 +9,21 @@ import NewSubmit from "./components/NewSubmit";
 import HomeAdmin from "./components/HomeAdmin";
 import FavQ from "./components/FavQ";
 import Updatepass from "./components/Updatepass";
+import Navbar from './components/Navbar';
+import TopBar from "./components/TopBar";
 
 function App() {
   return (
     <div>
       <Router>
+
+        <Navbar />
+
+
         <Routes>
+          <Route path="/" element={<Home />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/signin" element={<Signin />} />
-          <Route path="/home" element={<Home />} />
           <Route path="/adminhome" element={<HomeAdmin />} />
           <Route path="/forget-pass" element={<ForgetPassword />} />
           <Route path="/fav-q" element={<FavQ />} />

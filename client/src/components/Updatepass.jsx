@@ -33,7 +33,7 @@ function ForgetPassword() {
   const handleCheck = () => {
     console.log();
     axios
-      .post("http://localhost:5000/update-password", {
+      .post("http://localhost:5000/authuser/update-password", {
         username: localStorage.getItem("USERNAME"),
         password: formValues.password,
         cpassword: formValues.cpassword,

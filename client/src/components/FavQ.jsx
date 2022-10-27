@@ -18,7 +18,7 @@ function ForgetPassword() {
   const handleCheck = () => {
     console.log(username, secretA);
     axios
-      .post("http://localhost:5000/check-answer", {
+      .post("http://localhost:5000/authuser/check-answer", {
         username: localStorage.getItem("USERNAME"),
         secretA: secretA,
       })

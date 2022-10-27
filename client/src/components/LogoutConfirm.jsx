@@ -24,6 +24,7 @@ function Modal({ setOpenModal }) {
             <button
               onClick={() => {
                 localStorage.clear();
+                window.location.reload();
                 navigate("/signin");
               }}
               id="continuebtn"

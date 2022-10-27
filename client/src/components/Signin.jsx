@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.css";
 
 function Signin() {
   const navigate = useNavigate();
@@ -23,7 +24,7 @@ function Signin() {
   const handleSubmit = () => {
     console.log(username, password);
     axios
-      .post("http://localhost:5000/signin", {
+      .post("http://localhost:5000/authuser/signin", {
         username: formValues.username,
         password: formValues.password,
       })
@@ -38,7 +39,7 @@ function Signin() {
         }
         if (res.data.message === "user") {
           // move to home
-          navigate("/home");
+          navigate("/");
           localStorage.setItem("TOKEN", res.data.token);
           localStorage.setItem("USERNAME", res.data.username);
           localStorage.setItem("NAME", res.data.name);
@@ -56,9 +57,15 @@ function Signin() {
       });
   };
   const handleforgot = () => {
-    console.log(username);
+    console.log(formValues.username);
+
+    if (formValues.username === "") {
+      alert("Please Enter Username");
+      return;
+    }
+
     axios
-      .post("http://localhost:5000/forgotPassword", {
+      .post("http://localhost:5000/authuser/forgotPassword", {
         username: formValues.username,
       })
       .then((res) => {
@@ -81,17 +88,20 @@ function Signin() {
         console.log(err);
       });
   };
+
   const handleform = (e) => {
     e.preventDefault();
     setFormErrors(validate(formValues));
     setIsSubmit(true);
   };
+
   useEffect(() => {
     console.log(formErrors);
     if (Object.keys(formErrors).length === 0 && isSubmit) {
       console.log(formValues);
     }
   }, [formErrors]);
+
   const validate = (values) => {
     const errors = {};
     const regexPassword =
@@ -122,26 +132,7 @@ function Signin() {
 
   return (
     <>
-      <div className="Head">
-        <div class="topnav">
-          <a href="/home">
-            <img
-              src="/images/logo.png"
-              alt="logo"
-              width="100"
-              height="100"
-            ></img>
-          </a>
-          <div class="topnav-left">
-            <h3>COHORT 97</h3>
-          </div>
 
-          <div class="topnav-right">
-            {/* <h3>Welcome to our website</h3> */}
-          </div>
-        </div>
-        <div class="topnav"></div>
-      </div>
       <div className="container">
         <div className="field">
           <h1 className="center"> Sign in </h1>

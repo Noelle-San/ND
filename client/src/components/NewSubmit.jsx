@@ -10,7 +10,7 @@ function NewSubmit() {
   const handleSubmit = () => {
     console.log(otp, password);
     axios
-      .post("http://localhost:5000/submit-otp", {
+      .post("http://localhost:5000/authuser/submit-otp", {
         otp: otp,
         password: password,
       })

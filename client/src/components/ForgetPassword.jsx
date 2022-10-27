@@ -31,7 +31,7 @@ function Home() {
   const handleCheck = () => {
     console.log();
     axios
-      .post("http://localhost:5000/fav-q", {
+      .post("http://localhost:5000/authuser/fav-q", {
         username: localStorage.getItem("USERNAME"),
         phone: formValues.phone,
         name: formValues.name,
@@ -100,29 +100,7 @@ function Home() {
 
   return (
     <>
-      <div className="Head">
-        <div class="topnav">
-          <a href="/home">
-            <img
-              src="/images/logo.png"
-              alt="logo"
-              width="100"
-              height="100"
-            ></img>
-          </a>
-          <div class="topnav-left">
-            <h3>COHORT 97</h3>
-          </div>
 
-          <div class="topnav-right">
-            <h3>Welcome to our website</h3>
-          </div>
-        </div>
-        <div class="topnav">
-          <Link to="/signin">Login</Link>
-          <Link to="/signup">Registration</Link>
-        </div>
-      </div>
       <div className="container">
         <div className="field">
           <h1 className="center"> Forgot Password</h1>

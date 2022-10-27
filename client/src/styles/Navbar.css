@@ -1,0 +1,27 @@
+.navbar_imageLogo {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  cursor: pointer;
+  object-fit: fill;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-left: 15px;
+  color: white !important;
+}
+
+.nav-link {
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-right: 15px;
+  color: white !important;
+}
+
+.navbar {
+  background-color: black !important;
+}
