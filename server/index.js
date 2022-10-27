@@ -5,7 +5,7 @@ const cors = require("cors");
 const userController = require("./controller/user");
 
 const DB =
-  "mongodb+srv://hulknoob15:qwerty123@cluster0.gufij1m.mongodb.net/MernStack?retryWrites=true&w=majority";
+  "mongodb+srv://tamaldas:tamaldas69@cluster0.qtpuyfr.mongodb.net/?retryWrites=true&w=majority";
 
 const app = express();
 

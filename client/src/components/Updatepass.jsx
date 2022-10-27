@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
-import "./LogoutConfirm.css";
+import "../styles/LogoutConfirm.css";
 import ConfirmPasswordUpdate from "./ConfirmPasswordUpdate";
 
 function ForgetPassword() {

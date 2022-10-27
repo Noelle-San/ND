@@ -1,5 +1,5 @@
 import React from "react";
-import "./LogoutConfirm.css";
+import "../styles/LogoutConfirm.css";
 import { Link, useNavigate } from "react-router-dom";
 
 function Modal({ setUpdatePass }) {
