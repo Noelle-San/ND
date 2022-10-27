@@ -1,0 +1,234 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.outcard {
+  padding: 25px;
+  margin-left: 22%;
+  width: 50%;
+  box-shadow: 0 1px 2px 1px #ddd;
+  border-radius: 3px;
+}
+
+.card {
+  box-shadow: 0 1px 2px 1px #ddd;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  background-color: #eee;
+}
+
+.inputs {
+  width: 93%;
+  color: #444;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  padding: 10px 10px;
+}
+
+/* .btns {
+  background-color: #0050b1;
+  /* color: #fff;
+  width: 100%;
+  padding: 10px 10px;
+  border-radius: 3px;
+  border: none; */
+
+button {
+  transition: all 0.5s ease;
+  color: #fff;
+  border: 3px solid white;
+  font-family: "Montserrat", sans-serif;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1;
+  font-size: 17px;
+  background-color: transparent;
+  padding: 10px;
+  outline: none;
+  width: 70%;
+  border-radius: 4px;
+}
+button:hover {
+  color: #001f3f;
+  background-color: #fff;
+}
+.button {
+  color: rgb(255, 255, 255);
+  /* background-color: blue; */
+}
+
+.center {
+  text-align: center;
+}
+.topnav {
+  background-color: black;
+  overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: #04aa6d;
+  color: white;
+}
+
+/* Right-aligned section inside the top navigation */
+.topnav-right {
+  float: right;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+.topnav-left {
+  margin-top: 30px;
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+body {
+  background: white;
+  /* background: radial-gradient(
+    circle,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(30, 54, 59, 1) 0%,
+    rgba(93, 93, 116, 1) 100%
+  ); */
+}
+
+.container {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  max-width: 500px;
+  width: 100%;
+  margin: auto;
+}
+.container > div {
+  width: 70%;
+  border: 1px solid #e8d5d5;
+  padding: 20px;
+  border-radius: 5px;
+  background: #f7f7f7;
+  align-items: center;
+  margin-top: 160px;
+}
+.container > form {
+  width: 70%;
+  border: 1px solid #e8d5d5;
+  padding: 20px;
+  border-radius: 5px;
+  background: #f7f7f7;
+  align-items: center;
+}
+pre {
+  width: 70%;
+  color: #fff;
+  font-size: larger;
+}
+
+/* button {
+  background: #0563b4 !important;
+  align-items: center;
+} */
+p {
+  color: red;
+}
+
+.logout {
+  color: white;
+}
+.containerreg {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  max-width: 1500px;
+  width: 100%;
+  margin: auto;
+  height: 1650px;
+}
+.containerreg > div {
+  width: 70%;
+  border: 1px solid #e8d5d5;
+  padding: 20px;
+  border-radius: 5px;
+  background: #f7f7f7;
+  align-items: center;
+}
+.containerreg > form {
+  width: 70%;
+  border: 1px solid #e8d5d5;
+  padding: 20px;
+  border-radius: 5px;
+  background: #f7f7f7;
+  align-items: center;
+}
+.Head {
+  position: fixed;
+  width: 100%;
+}
+.btns {
+  background-color: blue;
+}
+.signup {
+  background-color: blue;
+  color: white;
+}
