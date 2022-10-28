@@ -491,9 +491,18 @@ const AddUser = () => {
         {/* <Button variant="contained" onClick={() => addUserDetails()}>
           Add User
         </Button> */}
-        <button className="btn btn-warning" style={{ width: "auto !important", marginRight: "1rem", fontWeight: "600", paddingLeft: "1rem", paddingRight: "1rem" }} onClick={() => addUserDetails()} >
-          Add User
-        </button>
+
+
+        <div className="editproducts_btn_div"
+          style={{ display: "flex", justifyContent: "center", marginTop: "30px" }}
+        >
+          <button type="submit" onClick={() => addUserDetails()} class="btn btn-warning" style={{ width: "auto", marginRight: "1rem", fontWeight: "600", paddingLeft: "1rem", paddingRight: "1rem" }}>
+            Add User
+          </button>
+          <button type="submit" onClick={() => { Navigate("/all") }} class="btn btn-warning" style={{ width: "auto", fontWeight: "600", paddingLeft: "1rem", paddingRight: "1rem" }}>
+            Back to User list
+          </button>
+        </div>
       </FormControl>
     </Container>
   );

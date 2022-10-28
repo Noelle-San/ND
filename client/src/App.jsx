@@ -10,7 +10,6 @@ import HomeAdmin from "./components/HomeAdmin";
 import FavQ from "./components/FavQ";
 import Updatepass from "./components/Updatepass";
 import Navbar from './components/Navbar';
-import TopBar from "./components/TopBar";
 import AllUsers from "./components/AllUsers";
 import EditUser from "./components/EditUser";
 import AddUser from "./components/AddUser";
@@ -19,6 +18,10 @@ import CreateOrder from './pages/CreateOrder';
 import OrderDetails from './pages/OrderDetails';
 import OrderList from './pages/OrderList';
 import ProductDetails from './pages/ProductDetails';
+import AddProduct from "./components/AddProduct";
+import Details from "./components/Details";
+import ProductsHome from "./components/ProductsHome";
+import EditProduct from "./components/EditProduct";
 
 function App() {
   return (
@@ -50,6 +53,12 @@ function App() {
           <Route path="/createorder" element={<CreateOrder />} />
           <Route path="/productdetails/:id" element={<ProductDetails />} />
           <Route path="/cart" element={<Cart />} />
+
+
+          <Route path="/productshome" element={<ProductsHome />} />
+          <Route path="/add-product" element={<AddProduct />} />
+          <Route path="/edit-product/:id" element={<EditProduct />} />
+          <Route path="/view/:id" element={<Details />} />
 
         </Routes>
       </Router>
