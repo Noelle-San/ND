@@ -60,7 +60,7 @@ router.post("/signin", async (req, res) => {
             username: result.username,
             code: 200,
             message: "admin",
-            token: "hfgdhg",
+            token: "admintoken",
           });
         } else {
           res.send({
@@ -69,7 +69,7 @@ router.post("/signin", async (req, res) => {
             email: result.email,
             code: 200,
             message: "user",
-            token: "hfgdhg",
+            token: "usertoken",
           });
         }
       }

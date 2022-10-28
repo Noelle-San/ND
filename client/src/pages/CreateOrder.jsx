@@ -33,7 +33,7 @@ const CreateOrder = () => {
 
             <div className="container">
                 <h1 className='productslist_header1'>Products list</h1>
-                <hr />
+                <hr className='productslist_hr1' />
                 <br />
                 <br />
 
@@ -45,7 +45,7 @@ const CreateOrder = () => {
 
                                 <div className="productslist_parents">
                                     <div className="productslist_imagediv">
-                                        <img src={product.img} className="img-fluid" alt="Phone" />
+                                        <img src={product.img} className="img-fluid product_image" alt="Phone" />
 
                                     </div>
 

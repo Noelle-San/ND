@@ -74,7 +74,7 @@ const Cart = () => {
             // clear out the order.products array
             toast("🦄 Order placed !", {
                 position: "top-right",
-                autoClose: 1000,
+                autoClose: 700,
                 hideProgressBar: false,
                 closeOnClick: true,
                 pauseOnHover: false,
@@ -119,59 +119,79 @@ const Cart = () => {
                 <br />
                 <br />
 
-                <div className="cart_parent">
+                {/* old products !== Undefined */}
 
-                    {oldproducts.map((product) => (
-                        <>
-                            <div className="card cart_card"   >
-                                <div className="card-body">
+                {oldproducts.length > 0 ? (
+                    <>
+                        <div className="cart_parent">
 
-                                    <h1 className='cart_header1'>{product.name}</h1>
-                                    <hr />
-                                    <br />
-                                    <div className="cart_parents">
-                                        <div className="cart_imagediv">
-                                            <img src={product.img} className="img-fluid" alt="Phone" />
+                            {oldproducts.map((product) => (
+                                <>
+                                    <div className="card cart_card"   >
+                                        <div className="card-body">
 
-                                        </div>
-
-                                        <div className="cart_textdiv">
-
-
-                                            <span className="card-text"><span className='cart_productid'>Product ID :</span> {product.productid} </span> <br />
-
-                                            <span className="card-text"><span className='cart_productid'>Unit MRP (INR) :</span> {product.price} </span> <br />
-
-                                            <span className="card-text"><span className='cart_productid'>Quantity :</span> {product.qty} </span> <br />
-
+                                            <h1 className='cart_header1'>{product.name}</h1>
                                             <hr />
+                                            <br />
+                                            <div className="cart_parents">
+                                                <div className="cart_imagediv">
+                                                    <img src={product.img} className="img-fluid" alt="Phone" />
 
-                                            <span className="card-text"><span className='cart_productid'>Total Cost(INR) :</span> {product.totalprice} </span> <br />
+                                                </div>
 
+                                                <div className="cart_textdiv">
+
+
+                                                    <span className="card-text"><span className='cart_productid'>Product ID :</span> {product.productid} </span> <br />
+
+                                                    <span className="card-text"><span className='cart_productid'>Unit MRP (INR) :</span> {product.price} </span> <br />
+
+                                                    <span className="card-text"><span className='cart_productid'>Quantity :</span> {product.qty} </span> <br />
+
+                                                    <hr />
+
+                                                    <span className="card-text"><span className='cart_productid'>Total Cost(INR) :</span> {product.totalprice} </span> <br />
+
+
+
+                                                </div>
+                                            </div>
 
 
                                         </div>
                                     </div>
+                                </>
+                            ))}
 
 
+
+                        </div>
+
+                        <hr />
+
+
+                        <div className="total_parent">
+                            <div>
+                                <h3 className='cart_header1' >Total cost of the order (INR) : {totalcartcost} </h3>
+                                <button className='btn btn-warning' onClick={() => { placeorder() }}>Place order</button>
+                            </div>
+                        </div>
+                    </>
+                ) : (
+
+                    <>
+                        <div className="container noorders_container">
+                            <div className="noorders_container2">
+                                <h1>No products in cart !</h1>
+                                <div className="noorders_button_container">
+                                    <button className="btn btn-warning" onClick={() => {
+                                        Navigate("/createorder");
+                                    }}>Start shopping !</button>
                                 </div>
                             </div>
-                        </>
-                    ))}
-
-
-
-                </div>
-
-                <hr />
-
-
-                <div className="total_parent">
-                    <div>
-                        <h3 className='cart_header1' >Total cost of the order (INR) : {totalcartcost} </h3>
-                        <button className='btn btn-warning' onClick={() => { placeorder() }}>Place order</button>
-                    </div>
-                </div>
+                        </div>
+                    </>
+                )}
             </div>
         </>
     )

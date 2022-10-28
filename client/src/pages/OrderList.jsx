@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { FaArrowUp, FaArrowDown } from "react-icons/fa";
 import { GetOrders } from "../service/CohortApi"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import moment from "moment";
 import TopBar from "../components/TopBar";
 import "../styles/OrderList.css";
@@ -13,6 +13,8 @@ function OrderList() {
     const [sorted, setSorted] = useState({ sorted: "id", reversed: false });
     const [defaultemail, setdefaultemail] = useState(localStorage.getItem("EMAIL"));
     const [status, setStatus] = useState("All");
+
+    const navigate = useNavigate();
 
 
 
@@ -261,8 +263,15 @@ function OrderList() {
                     </>
                 ) : (
                     <>
-                        <div className="container">
-                            <h1>No orders yet !</h1>
+                        <div className="container noorders_container">
+                            <div className="noorders_container2">
+                                <h1>No orders yet !</h1>
+                                <div className="noorders_button_container">
+                                    <button className="btn btn-warning" onClick={() => {
+                                        navigate("/cart");
+                                    }}>Back to cart !</button>
+                                </div>
+                            </div>
                         </div>
                     </>
                 )}

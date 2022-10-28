@@ -1,0 +1,12 @@
+.home_container1 {
+  display: flex;
+  justify-content: center;
+  margin-top: 10rem;
+  text-align: center;
+}
+
+@media (max-width: 430px) {
+  .home_container1 {
+    margin-top: 5rem;
+  }
+}

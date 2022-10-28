@@ -47,3 +47,17 @@ tr {
   align-items: center;
   justify-content: space-between;
 }
+
+.noorders_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.noorders_button_container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
