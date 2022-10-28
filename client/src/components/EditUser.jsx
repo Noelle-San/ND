@@ -5,6 +5,8 @@ import { FormControl, FormGroup, Typography, Button, Input, InputLabel } from '@
 
 import { editUser, getUser } from '../service/api';
 import { useNavigate, useParams } from 'react-router-dom';
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 
@@ -27,12 +29,35 @@ const defaultValue = {
 }
 
 
+
 const EditUser = () => {
 
     const [user, setUser] = useState(defaultValue);
 
     const navigate = useNavigate();
     const { id } = useParams();
+
+    const Navigate = useNavigate();
+
+    useEffect(() => {
+        if (localStorage.getItem("TOKEN") !== "admintoken") {
+            toast("🔴 You are not authorized to view this page !", {
+                position: "top-right",
+                autoClose: 700,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                progress: undefined,
+                closeButton: true,
+                onClose: () => {
+                    Navigate("/signin");
+                },
+            });
+        }
+
+
+    }, []);
 
     useEffect(() => {
         loadUserDetails();
@@ -45,7 +70,20 @@ const EditUser = () => {
 
     const editUserDetails = async () => {
         await editUser(user, id);
-        navigate('/all');
+        toast("🦄 User updated !", {
+            position: "top-right",
+            autoClose: 700,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: false,
+            progress: undefined,
+            closeButton: true,
+            onClose: () => {
+                navigate('/all');
+            },
+        });
+
 
     }
 
@@ -59,6 +97,17 @@ const EditUser = () => {
 
     return (
         <Container>
+            <ToastContainer
+                position="top-right"
+                autoClose={700}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                closeButton={false}
+                limit={1}
+            />
             <Typography variant="h3">EDIT USER -- <b>{user.name} </b></Typography><br />
             <FormControl>
                 <InputLabel required id="outlined-required">Name </InputLabel> <br />

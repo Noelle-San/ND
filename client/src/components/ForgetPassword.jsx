@@ -31,7 +31,7 @@ function Home() {
   const handleCheck = () => {
     console.log();
     axios
-      .post("http://localhost:5000/authuser/fav-q", {
+      .post("http://localhost:5000/authuser/favquestion", {
         username: localStorage.getItem("USERNAME"),
         phone: formValues.phone,
         name: formValues.name,
@@ -101,7 +101,9 @@ function Home() {
   return (
     <>
 
-      <div className="container">
+      <div className="container"
+        style={{ marginTop: "2rem" }}
+      >
         <div className="field">
           <h1 className="center"> Forgot Password</h1>
           Username{" "}
@@ -137,15 +139,23 @@ function Home() {
         </div>
         <br />
 
-        <button className="btns" onClick={handleform}>
-          {" "}
-          CHECK{" "}
-        </button>
-        <br />
-        <button className="btns" onClick={ClearFields}>
-          {" "}
-          CLEAR{" "}
-        </button>
+        <div className="forgetpass_btn_div"
+
+          style={{ display: "flex", justifyContent: "center" }}>
+          <button className="signin_btns" onClick={handleform}
+            style={{ marginRight: "1rem" }}
+          >
+            {" "}
+            CHECK{" "}
+          </button>
+
+          <button className="signin_btns" onClick={ClearFields}
+            style={{ marginRight: "1rem" }}
+          >
+            {" "}
+            CLEAR{" "}
+          </button>
+        </div>
       </div>
     </>
   );

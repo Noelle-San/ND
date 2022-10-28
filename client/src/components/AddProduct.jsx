@@ -84,8 +84,21 @@ const AddProduct = () => {
             });
 
         } else {
-            navigate("/productshome");
-            console.log("data added");
+            toast("🦄 Product added !", {
+                position: "top-right",
+                autoClose: 700,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                progress: undefined,
+                closeButton: true,
+                onClose: () => {
+                    navigate("/productshome");
+                },
+            });
+
+
 
         }
     }

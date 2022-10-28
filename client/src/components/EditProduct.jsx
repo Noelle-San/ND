@@ -66,7 +66,19 @@ const EditProduct = () => {
     console.log(data);
 
     if (res.status === 422 || !data) {
-      console.log("error ");
+
+      toast("🔴 Internal error, try again later !", {
+        position: "top-right",
+        autoClose: 700,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+        closeButton: true,
+
+      });
+
     } else {
       setINP(data);
       console.log("get data");
@@ -117,7 +129,23 @@ const EditProduct = () => {
       });
 
     } else {
-      navigate("/");
+
+      toast("🦄 Product updated !", {
+        position: "top-right",
+        autoClose: 700,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+        closeButton: true,
+
+        onClose: () => {
+          navigate("/productshome");
+        },
+
+      });
+
 
     }
   };
@@ -138,7 +166,11 @@ const EditProduct = () => {
       />
 
 
-      <NavLink to="/">home2</NavLink>
+      {/* <NavLink to="/">home2</NavLink> */}
+
+      <h1
+        style={{ textAlign: "center", marginTop: "30px", marginBottom: "60px" }}
+      >Edit product - {inpval.name}</h1>
 
       {inpval.name !== "" && (<form className="mt-4">
 
@@ -210,8 +242,17 @@ const EditProduct = () => {
             />
           </div>
 
-          <button type="submit" onClick={updateuser} class="btn btn-primary">
-            Submit
+
+        </div>
+
+        <div className="editproducts_btn_div"
+          style={{ display: "flex", justifyContent: "center", marginTop: "30px" }}
+        >
+          <button type="submit" onClick={updateuser} class="btn btn-warning" style={{ width: "auto", marginRight: "1rem", fontWeight: "600", paddingLeft: "1rem", paddingRight: "1rem" }}>
+            Update data
+          </button>
+          <button type="submit" onClick={() => { Navigate("/productshome") }} class="btn btn-warning" style={{ width: "auto", fontWeight: "600", paddingLeft: "1rem", paddingRight: "1rem" }}>
+            Back to products list
           </button>
         </div>
       </form>)}

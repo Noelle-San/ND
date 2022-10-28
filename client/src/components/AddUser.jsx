@@ -41,13 +41,13 @@ const AddUser = () => {
 
 
 
-  useEffect(() => {
-    const admintoken = localStorage.getItem("admintoken");
-    if (admintoken !== "admintoken") {
+  const Navigate = useNavigate();
 
-      toast("🦄 You are not authorized to access this page !", {
+  useEffect(() => {
+    if (localStorage.getItem("TOKEN") !== "admintoken") {
+      toast("🔴 You are not authorized to view this page !", {
         position: "top-right",
-        autoClose: 1000,
+        autoClose: 700,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: false,
@@ -55,10 +55,12 @@ const AddUser = () => {
         progress: undefined,
         closeButton: true,
         onClose: () => {
-          window.location.href = "/signin";
+          Navigate("/signin");
         },
       });
     }
+
+
   }, []);
 
 
@@ -72,32 +74,329 @@ const AddUser = () => {
 
   const addUserDetails = async () => {
 
-    // name must not be longer than 50 characters
+
+    if (user.name.length <= 0) {
+      toast("🔴 Name must not be empty !", {
+        position: "top-right",
+        autoClose: 700,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+        closeButton: true,
+      });
+      return;
+    }
+
+    if (user.name.length < 6) {
+      toast("🔴 Name must not be less than 6 characters !", {
+        position: "top-right",
+        autoClose: 700,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+        closeButton: true,
+      });
+      return;
+    }
 
     if (user.name.length > 50) {
-      alert("Name must not be longer than 50 characters");
+      toast("🔴 Name must not be longer than 50 characters !", {
+        position: "top-right",
+        autoClose: 700,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+        closeButton: true,
+      });
       return;
     }
 
-    // age must be a number between 0 and 55
 
-    if (isNaN(user.age) || user.age < 0 || user.age > 55) {
-      alert("Age must be a number between 0 and 55");
+    // age must be a number, not empty, not less than 18, not more than 100
+    if (user.age.length < 1) {
+      toast("🔴 Age must not be empty !", {
+        position: "top-right",
+        autoClose: 700,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+        closeButton: true,
+      });
+      return;
+    }
+
+    if (user.age < 18) {
+      toast("🔴 Age must not be less than 18 !", {
+        position: "top-right",
+        autoClose: 700,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+        closeButton: true,
+      });
+      return;
+    }
+
+    if (user.age > 100) {
+      toast("🔴 Age must not be more than 100 !", {
+        position: "top-right",
+        autoClose: 700,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+        closeButton: true,
+      });
+      return;
+    }
+
+    if (user
+      .age
+      .toString()
+      .match(/^[0-9]+$/) === null) {
+      toast("🔴 Age must be a number !", {
+        position: "top-right",
+        autoClose: 700,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+        closeButton: true,
+      });
       return;
     }
 
 
-    // phone must be a number between 0 and 9999999999 and not less than 10 digits
-
-    if (isNaN(user.phone) || user.phone < 0 || user.phone > 9999999999 || user.phone.toString().length < 10) {
-      alert("Phone must be a number between 0 and 9999999999 and not less than 10 digits");
+    if (user.sex.length < 1 || user.sex.length > 1) {
+      toast("🔴 Sex must either be M, F, U !", {
+        position: "top-right",
+        autoClose: 700,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+        closeButton: true,
+      });
       return;
     }
+
+
+    // location must not be empty, not less than 6, not more than 50
+    if (user.location.length < 1) {
+      toast("🔴 Location must not be empty !", {
+        position: "top-right",
+        autoClose: 700,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+        closeButton: true,
+      });
+      return;
+    }
+
+    if (user.location.length < 6) {
+      toast("🔴 Location must not be less than 6 characters !", {
+        position: "top-right",
+        autoClose: 700,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+        closeButton: true,
+      });
+      return;
+    }
+
+    if (user.location.length > 50) {
+      toast("🔴 Location must not be longer than 50 characters !", {
+        position: "top-right",
+        autoClose: 700,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+        closeButton: true,
+      });
+      return;
+    }
+
+
+    // a regex to check if the email is valid
+
+    if (user.email.length < 1) {
+      toast("🔴 Email must not be empty !", {
+        position: "top-right",
+        autoClose: 700,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+        closeButton: true,
+      });
+      return;
+    }
+
+    if (user.email.length < 6) {
+      toast("🔴 Email must not be less than 6 characters !", {
+        position: "top-right",
+        autoClose: 700,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+        closeButton: true,
+      });
+      return;
+    }
+
+    if (user.email.length > 50) {
+      toast("🔴 Email must not be longer than 50 characters !", {
+        position: "top-right",
+        autoClose: 700,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+        closeButton: true,
+      });
+      return;
+    }
+
+    if (user
+      .email
+      .match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i) === null) {
+      toast("🔴 Email is not valid !", {
+        position: "top-right",
+        autoClose: 700,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+        closeButton: true,
+      });
+      return;
+    }
+
+
+
+
+
+
+    // phone number must be a number, it must be 10 digits, must be less than 9999999999 
+    if (user.phone.length < 1) {
+      toast("🔴 Phone number must not be empty !", {
+        position: "top-right",
+        autoClose: 700,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+        closeButton: true,
+      });
+      return;
+    }
+
+    if (user.phone.length < 10) {
+      toast("🔴 Phone number must not be less than 10 digits !", {
+        position: "top-right",
+        autoClose: 700,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+        closeButton: true,
+      });
+      return;
+    }
+
+    if (user.phone.length > 10) {
+      toast("🔴 Phone number must not be more than 10 digits !", {
+        position: "top-right",
+        autoClose: 700,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+        closeButton: true,
+      });
+      return;
+    }
+
+    if (user
+      .phone
+      .toString()
+      .match(/^[0-9]+$/) === null) {
+      toast("🔴 Phone number must be a number !", {
+        position: "top-right",
+        autoClose: 700,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+        closeButton: true,
+      });
+      return;
+    }
+
+    if (user.phone > 9999999999) {
+      toast("🔴 Phone number must not be more than 10 digits !", {
+        position: "top-right",
+        autoClose: 700,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+        closeButton: true,
+      });
+      return;
+    }
+
+
 
 
 
     await addUser(user);
-    navigate("/all");
+
+    toast("🦄 User added !", {
+      position: "top-right",
+      autoClose: 700,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: false,
+      progress: undefined,
+      closeButton: true,
+      onClose: () => {
+        navigate("/all");
+      },
+    });
+
   };
 
   return (
@@ -113,9 +412,11 @@ const AddUser = () => {
         closeButton={false}
         limit={1}
       />
-      <Typography variant="h3">
+      {/* <Typography variant="h3">
         <b>ADD NEW USER</b>
-      </Typography>
+      </Typography> */}
+      <h1
+        style={{ textAlign: "center" }}>Add new user</h1>
       <br />
       <FormControl>
         <InputLabel required id="outlined-required">
@@ -166,9 +467,12 @@ const AddUser = () => {
       </FormControl>
 
       <FormControl>
-        <Button variant="contained" onClick={() => addUserDetails()}>
+        {/* <Button variant="contained" onClick={() => addUserDetails()}>
           Add User
-        </Button>
+        </Button> */}
+        <button className="btn btn-warning" style={{ width: "auto !important", marginRight: "1rem", fontWeight: "600", paddingLeft: "1rem", paddingRight: "1rem" }} onClick={() => addUserDetails()} >
+          Add User
+        </button>
       </FormControl>
     </Container>
   );

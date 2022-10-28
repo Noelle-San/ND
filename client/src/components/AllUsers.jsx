@@ -18,7 +18,7 @@ import { AiOutlineDelete } from 'react-icons/ai'
 
 const StyledTable = styled(Table)`
   width: 90%;
-  margin: 50px auto 0 auto;
+  margin: 70px auto 0 auto;
 `;
 
 const THead = styled(TableRow)`
@@ -112,10 +112,30 @@ const AllUsers = () => {
         limit={1}
       />
       {" "}
-      <h1
-        style={{ textAlign: "center", marginTop: "50px", color: "black" }}
-      >All Users</h1>
+
+      <div className="container" style={{ display: "flex", justifyContent: "space-between", marginTop: "3rem" }}>
+        <h1
+          style={{ color: "black" }}
+        >All Users</h1>
+
+        <button className="btn btn-warning"
+          style={{ width: "auto", marginRight: "1rem", fontWeight: "600", paddingLeft: "1rem", paddingRight: "1rem" }}
+          onClick={() => Navigate("/add")}
+        >
+
+          Add User</button>
+      </div>
+
+
+      <div
+
+      >
+
+
+      </div>
+
       <StyledTable>
+
         <TableHead>
           <THead>
             <TableCell>Id</TableCell>
@@ -157,6 +177,7 @@ const AllUsers = () => {
           ))}
         </TableBody>
       </StyledTable>
+
 
 
     </div>
