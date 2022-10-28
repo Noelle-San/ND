@@ -108,7 +108,10 @@ const EditUser = () => {
                 closeButton={false}
                 limit={1}
             />
-            <Typography variant="h3">EDIT USER -- <b>{user.name} </b></Typography><br />
+
+            <h1
+                style={{ color: "black", textAlign: "center", marginTop: "2%" }}
+            >Edit User - {user.name}</h1>
             <FormControl>
                 <InputLabel required id="outlined-required">Name </InputLabel> <br />
                 <Input onChange={(e) => onValueChange(e)} name="name" value={user.name} />
@@ -140,9 +143,22 @@ const EditUser = () => {
             </FormControl>
 
 
-            <FormControl>
+            {/* <FormControl>
                 <Button variant="contained" onClick={() => editUserDetails()}>Update User</Button>
-            </FormControl>
+            </FormControl> */}
+
+            <div className="editproducts_btn_div"
+                style={{ display: "flex", justifyContent: "center", marginTop: "30px" }}
+            >
+                <button type="submit" onClick={() => editUserDetails()} class="btn btn-warning" style={{ width: "auto", marginRight: "1rem", fontWeight: "600", paddingLeft: "1rem", paddingRight: "1rem" }}>
+                    Update data
+                </button>
+                <button type="submit" onClick={() => { Navigate("/all") }} class="btn btn-warning" style={{ width: "auto", fontWeight: "600", paddingLeft: "1rem", paddingRight: "1rem" }}>
+                    Back to users list
+                </button>
+            </div>
+
+
         </Container>
     )
 }

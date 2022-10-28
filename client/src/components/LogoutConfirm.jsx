@@ -18,6 +18,7 @@ function Modal({ setOpenModal }) {
                 setOpenModal(false);
               }}
               id="cancelBtn"
+              className="signin_btns"
             >
               Cancel
             </button>
@@ -28,6 +29,7 @@ function Modal({ setOpenModal }) {
                 navigate("/signin");
               }}
               id="continuebtn"
+              className="signin_btns"
             >
               Continue
             </button>

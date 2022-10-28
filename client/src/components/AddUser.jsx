@@ -381,21 +381,44 @@ const AddUser = () => {
 
 
 
-    await addUser(user);
+    const newuser = await addUser(user);
+    console.log(newuser);
 
-    toast("🦄 User added !", {
-      position: "top-right",
-      autoClose: 700,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: false,
-      draggable: false,
-      progress: undefined,
-      closeButton: true,
-      onClose: () => {
-        navigate("/all");
-      },
-    });
+    if (newuser.exists === true) {
+      toast("🦄 User already exists !", {
+        position: "top-right",
+        autoClose: 700,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+        closeButton: true,
+
+      });
+
+      return;
+    }
+
+    if (newuser.exists === false) {
+      toast("🦄 User added !", {
+        position: "top-right",
+        autoClose: 700,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+        closeButton: true,
+        onClose: () => {
+          navigate("/all");
+        },
+      });
+    }
+
+
+
+
 
   };
 
@@ -412,9 +435,7 @@ const AddUser = () => {
         closeButton={false}
         limit={1}
       />
-      {/* <Typography variant="h3">
-        <b>ADD NEW USER</b>
-      </Typography> */}
+
       <h1
         style={{ textAlign: "center" }}>Add new user</h1>
       <br />

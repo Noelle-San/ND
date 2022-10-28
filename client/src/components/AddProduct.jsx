@@ -55,6 +55,25 @@ const AddProduct = () => {
 
         const { name, category, img, price, creationdate, expiredate } = inpval;
 
+        // name, category, img, price, creationdate, expiredate must not be empty 
+        if (!name || !category || !img || !price || !creationdate || !expiredate) {
+            toast("🦄 Please fill all the fields !", {
+
+                position: "top-right",
+                autoClose: 700,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                progress: undefined,
+                closeButton: true,
+
+            });
+
+            return;
+        }
+
+
         const res = await fetch("http://localhost:5000/products/add", {
             method: "POST",
             headers: {
@@ -116,8 +135,12 @@ const AddProduct = () => {
                 closeButton={false}
                 limit={1}
             />
-            <NavLink to="/">home</NavLink>
+
             <form className="mt-4">
+
+                <h1
+                    style={{ color: "black", textAlign: "center", marginTop: "2%", marginBottom: "2%" }}
+                >Add Product</h1>
 
                 <div className="row">
                     <div class="mb-3 col-lg-6 col-md-6 col-12">
@@ -142,7 +165,17 @@ const AddProduct = () => {
                     </div>
 
 
-                    <button type="submit" onClick={addinpdata} class="btn btn-primary">Submit</button>
+                    {/* <button type="submit" onClick={addinpdata} class="btn btn-primary">Submit</button> */}
+                    <div className="editproducts_btn_div"
+                        style={{ display: "flex", justifyContent: "center", marginTop: "30px" }}
+                    >
+                        <button type="submit" onClick={addinpdata} class="btn btn-warning" style={{ width: "auto", marginRight: "1rem", fontWeight: "600", paddingLeft: "1rem", paddingRight: "1rem" }}>
+                            Submit
+                        </button>
+                        <button type="submit" onClick={() => { Navigate("/productshome") }} class="btn btn-warning" style={{ width: "auto", fontWeight: "600", paddingLeft: "1rem", paddingRight: "1rem" }}>
+                            Back to Products list
+                        </button>
+                    </div>
                 </div>
             </form>
         </div>

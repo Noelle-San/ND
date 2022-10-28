@@ -4,7 +4,9 @@ const URL = "http://localhost:5000";
 
 export const addUser = async (data) => {
   try {
-    return await axios.post(`${URL}/admin/add`, data);
+    const addeduser = await axios.post(`${URL}/admin/add`, data);
+
+    return addeduser.data;
   } catch (error) {
     console.log("eror calling adduser api", error);
   }

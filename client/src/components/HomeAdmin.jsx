@@ -1,82 +1,65 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import LogoutConfirm from "./LogoutConfirm";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import "../styles/UserHome.css"
 
 function HomeAdmin() {
+
+  // useEffect(() => {
+  //   const admintoken = localStorage.getItem("admintoken");
+  //   if (admintoken !== "admintoken") {
+  //     alert("You are not authorized to access this page");
+  //     window.location.href = "/signin";
+  //   }
+  // }, []);
+
   const navigate = useNavigate();
 
   const [toggleAdmin, setToggleAdmin] = useState(false);
 
   useEffect(() => {
-    const token = localStorage.getItem("TOKEN");
-    if (!token) {
-      navigate("/signin");
+    if (localStorage.getItem("TOKEN") !== "admintoken") {
+      toast("🔴 You are not authorized to view this page !", {
+        position: "top-right",
+        autoClose: 700,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+        closeButton: true,
+        onClose: () => {
+          navigate("/signin");
+        },
+      });
     }
+
+
   }, []);
 
   return (
     <>
-      {toggleAdmin ? <LogoutConfirm setOpenModal={setToggleAdmin} /> : null}
-      <div>
-        <div class="topnav">
-          <a href="home">
-            <img
-              src="/images/logo.png"
-              alt="logo"
-              width="100"
-              height="100"
-            ></img>
-          </a>
-          <div class="topnav-left">
-            <h3>COHORT 97</h3>
-          </div>
-
-          <div class="topnav-right">
-            <h3>Welcome, {localStorage.getItem("NAME")}</h3>
-          </div>
-        </div>
-        <div class="topnav">
-          <a href="home">Home</a>
-          <a href="#news">Contact Us</a>
-          <a href="#news">About us</a>
-          <a href="#news">Products</a>
-          <a href="#news">Users</a>
-          <a href="#news">Orders</a>
-          <a
-            className="logout"
-            onClick={() => {
-              setToggleAdmin(true);
-            }}
-          >
-            Logout
-          </a>
-          {/* <a
-          onClick={() => {
-            localStorage.clear();
-            navigate("/signin");
-          }}
-        >
-          Logout
-        </a> */}
+      <ToastContainer
+        position="top-right"
+        autoClose={700}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        closeButton={false}
+        limit={1}
+      />
+      {/* {toggleAdmin ? <LogoutConfirm setOpenModal={setToggleAdmin} /> : null} */}
+      <div className="container home_container1">
+        <div className="home_container2">
+          <h1 className="home_h1">Welcome to the Admin's Home Page !</h1>
         </div>
       </div>
     </>
-    // <div className="card">
-    //   <div>HOME</div>
-    //   <div>
-    //     <span> {localStorage.getItem("USERNAME")} </span>
-    //     <button
-    //       onClick={() => {
-    //         localStorage.clear();
-    //         navigate("/signin");
-    //       }}
-    //     >
-    //       {" "}
-    //       LOGOUT{" "}
-    //     </button>
-    //   </div>
-    //   <h1>I am admin boii</h1>
-    // </div>
+
   );
 }
 
