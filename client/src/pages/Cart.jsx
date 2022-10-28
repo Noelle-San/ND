@@ -77,7 +77,7 @@ const Cart = () => {
                 autoClose: 1000,
                 hideProgressBar: false,
                 closeOnClick: true,
-                pauseOnHover: true,
+                pauseOnHover: false,
                 draggable: false,
                 progress: undefined,
                 closeButton: true,
@@ -98,20 +98,19 @@ const Cart = () => {
         <>
             <ToastContainer
                 position="top-right"
-                autoClose={1000}
+                autoClose={700}
                 hideProgressBar={false}
                 newestOnTop={false}
                 closeOnClick
                 rtl={false}
                 pauseOnFocusLoss
-                draggable
-                pauseOnHover
                 closeButton={false}
+                limit={1}
             />
             <br />
             <div className="container cart_main_parent">
                 <div className="dropdown_parent">
-                    <h2>My Cart </h2>
+                    <h2 className='cart_header1'>My Cart </h2>
 
                 </div>
 
@@ -169,7 +168,7 @@ const Cart = () => {
 
                 <div className="total_parent">
                     <div>
-                        <h3>Total cost of the order (INR) : {totalcartcost} </h3>
+                        <h3 className='cart_header1' >Total cost of the order (INR) : {totalcartcost} </h3>
                         <button className='btn btn-warning' onClick={() => { placeorder() }}>Place order</button>
                     </div>
                 </div>

@@ -215,47 +215,57 @@ function OrderList() {
                 </div>
                 <hr />
                 <br />
-                <div className="  table-container orderlist_parent">
-                    <table className="table table-info">
-                        <thead>
-                            <tr className="table-info">
-                                <th>
-                                    S. No.
-                                </th>
-                                <th onClick={sortById}>
-                                    <span style={{ marginRight: 10 }}>Order Id</span>
-                                    {sorted.sorted === "id" ? renderArrow() : null}
-                                </th>
+                {users.length > 0 ? (
+                    <>
+                        <div className="  table-container orderlist_parent">
+                            <table className="table table-info">
+                                <thead>
+                                    <tr className="table-info">
+                                        <th>
+                                            S. No.
+                                        </th>
+                                        <th onClick={sortById}>
+                                            <span style={{ marginRight: 10 }}>Order Id</span>
+                                            {sorted.sorted === "id" ? renderArrow() : null}
+                                        </th>
 
-                                <th onClick={sortByTotalCost}>
-                                    <span style={{ marginRight: 10 }}>Total cost</span>
-                                    {sorted.sorted === "Totalcost" ? renderArrow() : null}
-                                </th>
-                                {<th onClick={sortByShipmentDate}>
-                                    <span style={{ marginRight: 10 }}>Shipment Date</span>
-                                    {sorted.sorted === "ShipmentDate"
-                                        ? renderArrow()
-                                        : null}
-                                </th>}
+                                        <th onClick={sortByTotalCost}>
+                                            <span style={{ marginRight: 10 }}>Total cost</span>
+                                            {sorted.sorted === "Totalcost" ? renderArrow() : null}
+                                        </th>
+                                        {<th onClick={sortByShipmentDate}>
+                                            <span style={{ marginRight: 10 }}>Shipment Date</span>
+                                            {sorted.sorted === "ShipmentDate"
+                                                ? renderArrow()
+                                                : null}
+                                        </th>}
 
-                                {<th onClick={sortByCreationDate}>
-                                    <span style={{ marginRight: 10 }}>Creation Date</span>
-                                    {sorted.sorted === "CreationDate"
-                                        ? renderArrow()
-                                        : null}
-                                </th>}
+                                        {<th onClick={sortByCreationDate}>
+                                            <span style={{ marginRight: 10 }}>Creation Date</span>
+                                            {sorted.sorted === "CreationDate"
+                                                ? renderArrow()
+                                                : null}
+                                        </th>}
 
-                                <th>
-                                    Order status
-                                </th>
+                                        <th>
+                                            Order status
+                                        </th>
 
-                            </tr>
-                        </thead>
+                                    </tr>
+                                </thead>
 
-                        {status === "All" ? <tbody>{renderUsers()}</tbody> : status === "Shipped" ? <tbody>{renderUsersShipped()}</tbody> : status === "Out for delivery" ? <tbody>{renderUsersOutForDelivery()}</tbody> : status === "Pending" ? <tbody>{renderUsersPending()}</tbody> : null}
+                                {status === "All" ? <tbody>{renderUsers()}</tbody> : status === "Shipped" ? <tbody>{renderUsersShipped()}</tbody> : status === "Out for delivery" ? <tbody>{renderUsersOutForDelivery()}</tbody> : status === "Pending" ? <tbody>{renderUsersPending()}</tbody> : null}
 
-                    </table>
-                </div>
+                            </table>
+                        </div>
+                    </>
+                ) : (
+                    <>
+                        <div className="container">
+                            <h1>No orders yet !</h1>
+                        </div>
+                    </>
+                )}
             </div>
 
         </>

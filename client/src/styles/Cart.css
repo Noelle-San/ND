@@ -3,7 +3,7 @@
 }
 
 .cart_header1 {
-  font-family: "Poppins", sans-serif;
+  font-family: "Poppins", sans-serif !important;
   font-weight: 600;
   font-size: 1.5rem;
 }
