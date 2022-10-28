@@ -2,6 +2,9 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
+import "../styles/Signin.css";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Signin() {
   const navigate = useNavigate();
@@ -32,25 +35,77 @@ function Signin() {
         console.log(res.data);
 
         if (res.data.code === 500) {
-          alert("User Not Found");
+
+          toast("🦄 User not found !", {
+            position: "top-right",
+            autoClose: 700,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: false,
+            progress: undefined,
+            closeButton: true,
+
+          });
+          return;
         }
         if (res.data.code === 404) {
-          alert("Password is wrong");
+          toast("🦄 Wrong credentials !", {
+            position: "top-right",
+            autoClose: 700,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: false,
+            progress: undefined,
+            closeButton: true,
+
+          });
+          return;
         }
         if (res.data.message === "user") {
           // move to home
-          navigate("/");
+
           localStorage.setItem("TOKEN", res.data.token);
           localStorage.setItem("USERNAME", res.data.username);
           localStorage.setItem("NAME", res.data.name);
           localStorage.setItem("EMAIL", res.data.email);
+          toast("🦄 Logging you in !", {
+            position: "top-right",
+            autoClose: 700,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: false,
+            progress: undefined,
+            closeButton: true,
+            onClose: () => {
+              navigate("/");
+            }
+          });
+          return;
         }
         if (res.data.message === "admin") {
           // move to home
-          navigate("/adminhome");
           localStorage.setItem("TOKEN", res.data.token);
           localStorage.setItem("USERNAME", res.data.username);
           localStorage.setItem("NAME", res.data.name);
+          toast("🦄 Logging you in !", {
+            position: "top-right",
+            autoClose: 700,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: false,
+            progress: undefined,
+            closeButton: true,
+            onClose: () => {
+              navigate("/adminhome");
+            }
+          });
+          return;
+
+
         }
       })
       .catch((err) => {
@@ -61,7 +116,18 @@ function Signin() {
     console.log(formValues.username);
 
     if (formValues.username === "") {
-      alert("Please Enter Username");
+
+      toast("🦄 Please Enter Username !", {
+        position: "top-right",
+        autoClose: 700,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+        closeButton: true,
+
+      });
       return;
     }
 
@@ -73,10 +139,32 @@ function Signin() {
         console.log(res.data);
 
         if (res.data.code === 500) {
-          alert("User Not Found");
+          toast("🦄 User not found !", {
+            position: "top-right",
+            autoClose: 700,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: false,
+            progress: undefined,
+            closeButton: true,
+
+          });
+          return;
         }
         if (res.data.code === 404) {
-          alert("Password is wrong");
+          toast("🦄 Wrong credentials !", {
+            position: "top-right",
+            autoClose: 700,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: false,
+            progress: undefined,
+            closeButton: true,
+
+          });
+          return;
         }
         if (res.data.message === "username") {
           // move to home
@@ -134,7 +222,19 @@ function Signin() {
   return (
     <>
 
-      <div className="container">
+      <ToastContainer
+        position="top-right"
+        autoClose={700}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        closeButton={false}
+        limit={1}
+      />
+
+      <div className="signin_container">
         <div className="field">
           <h1 className="center"> Sign in </h1>
           Username
@@ -158,15 +258,15 @@ function Signin() {
         </div>
         <br />
 
-        <button onClick={handleform} className="btns">
+        <button onClick={handleform} className="signin_btns">
           {" "}
           SUBMIT{" "}
         </button>
         <br />
-        <button className="signup">
+        <button className="signin_btns">
           <Link
-            className="button"
-            style={{ textAlign: "center", display: "block", marginTop: "5px" }}
+
+            style={{ textAlign: "center", display: "block", marginTop: "5px", color: "white" }}
             to={"/signup"}
             data-inline="true"
           >

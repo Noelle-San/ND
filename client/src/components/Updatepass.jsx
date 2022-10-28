@@ -33,7 +33,7 @@ function ForgetPassword() {
   const handleCheck = () => {
     console.log();
     axios
-      .post("http://localhost:5000/authuser/update-password", {
+      .post("http://localhost:5000/authuser/updatepassword", {
         username: localStorage.getItem("USERNAME"),
         password: formValues.password,
         cpassword: formValues.cpassword,
@@ -103,29 +103,7 @@ function ForgetPassword() {
 
   return (
     <>
-      <div className="Head">
-        <div class="topnav">
-          <a href="/home">
-            <img
-              src="/images/logo.png"
-              alt="logo"
-              width="100"
-              height="100"
-            ></img>
-          </a>
-          <div class="topnav-left">
-            <h3>COHORT 97</h3>
-          </div>
 
-          <div class="topnav-right">
-            <h3>Welcome to our website</h3>
-          </div>
-        </div>
-        <div class="topnav">
-          <Link to="/signin">Login</Link>
-          <Link to="/signup">Registration</Link>
-        </div>
-      </div>
       {toggle ? <ConfirmPasswordUpdate setUpdatePass={setToggle} /> : null}
       <div className="container">
         <div className="feild">
@@ -150,29 +128,23 @@ function ForgetPassword() {
           <p>{formErrors.cpassword}</p>
         </div>
         <br />
-        <button className="btns" onClick={handleform}>
-          {" "}
-          RESET PASSWORD{" "}
-        </button>
-        <br />
-        <button className="btns" onClick={ClearFields}>
-          {" "}
-          CLEAR{" "}
-        </button>
+        <div className="updatepass_btn_div" style={{ display: "flex", justifyContent: "center" }}>
+          <button className="signin_btns" onClick={handleform}
+            style={{ marginRight: "1rem" }}
+          >
 
-        {/* <div>HOME</div>
-      <div>
-        <span> {localStorage.getItem("USERNAME")} </span>
-        <button
-          onClick={() => {
-            localStorage.clear();
-            navigate("/signin");
-          }}
-        >
-          {" "}
-          LOGOUT{" "}
-        </button>
-      </div> */}
+            RESET PASSWORD
+          </button>
+
+          <button className="signin_btns" onClick={ClearFields}
+            style={{ marginRight: "1rem" }}
+          >
+
+            CLEAR
+          </button>
+        </div>
+
+
       </div>
     </>
   );

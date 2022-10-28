@@ -1,0 +1,74 @@
+.signin_container {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  max-width: 50vw;
+  width: 100%;
+  margin: auto;
+}
+.signin_container > div {
+  border: 1px solid #e8d5d5;
+  padding: 20px;
+  border-radius: 5px;
+  background: #f7f7f7;
+  align-items: center;
+  width: 100%;
+  margin-top: 160px;
+}
+.signin_container > form {
+  border: 1px solid #e8d5d5;
+  padding: 20px;
+  border-radius: 5px;
+  background: #f7f7f7;
+  align-items: center;
+}
+
+.signin_btns {
+  background-color: #0050b1;
+  color: #fff;
+  width: auto;
+  padding: 10px 30px;
+  border-radius: 3px;
+  border: none;
+  font-family: "Montserrat", sans-serif;
+}
+
+.signin_btns:hover {
+  background-color: #0050b1;
+  color: #fff;
+  width: auto;
+  padding: 10px 30px;
+  border-radius: 3px;
+  border: none;
+  font-family: "Montserrat", sans-serif;
+}
+
+.signin_button {
+  transition: all 0.5s ease;
+  color: #fff;
+  border: 3px solid white;
+  font-family: "Montserrat", sans-serif;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1;
+  font-size: 17px;
+  background-color: transparent;
+  padding: 10px;
+  outline: none;
+  width: 70%;
+  border-radius: 4px;
+}
+
+@media (max-width: 430px) {
+  .signin_container {
+    max-width: 90vw !important;
+    height: auto !important;
+    margin-top: 3rem;
+  }
+
+  .signin_container > div {
+    margin-top: 0px;
+  }
+}

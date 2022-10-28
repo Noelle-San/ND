@@ -36,6 +36,7 @@
   border-radius: 5px;
   background: #f7f7f7;
   align-items: center;
+  z-index: 99;
   /* width: 500px;
   height: 500px;
   border-radius: 12px;
@@ -101,8 +102,10 @@
 } */
 
 #cancelBtn {
-  background-color: rgb(86, 8, 23);
+  background-color: rgb(170, 20, 50);
+  margin-right: 1rem;
 }
 #continuebtn {
   background-color: rgb(47, 53, 221);
+  margin-right: 1rem;
 }

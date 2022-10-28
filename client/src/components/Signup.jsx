@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 //import { Link } from "react-router-dom";
 import { Link, useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Signup() {
   const navigate = useNavigate();
@@ -20,16 +22,6 @@ function Signup() {
   const [formValues, setFormValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
-  // const [name, setName] = useState("");
-  // const [age, setAge] = useState("");
-  // const [sex, setSex] = useState("");
-  // const [location, setLocation] = useState("");
-  // const [phone, setPhone] = useState("");
-  // const [email, setEmail] = useState("");
-  // const [username, setUsername] = useState("");
-  // const [password, setPassword] = useState("");
-  // const [secretQ, setSecretQ] = useState("");
-  // const [secretA, setSecretA] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -54,12 +46,49 @@ function Signup() {
       .then((res) => {
         console.log(res.data);
         if (res.data.code === 200) {
-          alert("Signup success.");
-          navigate("/signin");
+
+          toast("🦄 Creating your account !", {
+            position: "top-right",
+            autoClose: 700,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: false,
+            progress: undefined,
+            closeButton: true,
+            onClose: () => {
+              navigate("/signin");
+            },
+          });
+
+
         } else if (res.data.code === 201) {
-          alert("user is already there");
+
+          toast("🦄 User is already there !", {
+            position: "top-right",
+            autoClose: 700,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: false,
+            progress: undefined,
+            closeButton: true,
+            onClose: () => {
+              navigate("/signin");
+            },
+          });
         } else {
-          alert("Error.");
+          toast("🔴 Error, try again later !", {
+            position: "top-right",
+            autoClose: 700,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: false,
+            progress: undefined,
+            closeButton: true,
+
+          });
         }
       })
       .catch((err) => {
@@ -177,12 +206,20 @@ function Signup() {
   return (
     <>
 
+      <ToastContainer
+        position="top-right"
+        autoClose={700}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        closeButton={false}
+        limit={1}
+      />
+
       <div className="containerreg">
-        {/* {Object.keys(formErrors).length === 0 && isSubmit ? (
-      <div className="ui message success">Signed in successfully</div>
-    ) : (
-      <pre>{JSON.stringify(formValues, undefined, 2)}</pre>
-    )} */}
+
 
         <div className="field">
           <h1 className="center">Register Yourself</h1>
@@ -379,128 +416,14 @@ function Signup() {
           <p>{formErrors.secretA}</p>
         </div>
         <br />
-        <button onClick={handleform} className="btns">
+        <button onClick={handleform} className="signin_btns">
           SUBMIT
         </button>
         <br />
-        <button onClick={ClearFields} className="btns">
+        <button onClick={ClearFields} className="signin_btns">
           RESET
         </button>
 
-        {/* <h1 className="center"> SIGNUP </h1>
-    <div className="outcard">
-      Name
-      <input
-        onChange={(e) => {
-          setName(e.target.value);
-        }}
-        value={name}
-        className="inputs"
-        type="text"
-      />{" "}
-      <br /> <br />
-      Age
-      <input
-        onChange={(e) => {
-          setAge(e.target.value);
-        }}
-        value={age}
-        className="inputs"
-        type="Number"
-      />{" "}
-      <br /> <br />
-      Sex
-      <input
-        onChange={(e) => {
-          setSex(e.target.value);
-        }}
-        value={sex}
-        className="inputs"
-        type="text"
-      />{" "}
-      <br /> <br />
-      Location
-      <input
-        onChange={(e) => {
-          setLocation(e.target.value);
-        }}
-        value={location}
-        className="inputs"
-        type="text"
-      />{" "}
-      <br /> <br />
-      Phone
-      <input
-        onChange={(e) => {
-          setPhone(e.target.value);
-        }}
-        value={phone}
-        className="inputs"
-        type="tel"
-      />{" "}
-      <br /> <br />
-      Email
-      <input
-        onChange={(e) => {
-          setEmail(e.target.value);
-        }}
-        value={email}
-        className="inputs"
-        type="email"
-      />{" "}
-      <br /> <br />
-      Username
-      <input
-        onChange={(e) => {
-          setUsername(e.target.value);
-        }}
-        value={username}
-        className="inputs"
-        type="text"
-      />{" "}
-      <br /> <br />
-      Password
-      <input
-        onChange={(e) => {
-          setPassword(e.target.value);
-        }}
-        value={password}
-        className="inputs"
-        type="password"
-      />{" "}
-      <br /> <br />
-      Secret Question
-      <input
-        onChange={(e) => {
-          setSecretQ(e.target.value);
-        }}
-        value={secretQ}
-        className="inputs"
-        type="email"
-      />{" "}
-      <br /> <br />
-      Secret Answer
-      <input
-        onChange={(e) => {
-          setSecretA(e.target.value);
-        }}
-        value={secretA}
-        className="inputs"
-        type="password"
-      />{" "}
-      <br /> <br />
-      <button onClick={handleSubmit} className="btns">
-        {" "}
-        SUBMIT{" "}
-      </button>
-      <Link
-        style={{ textAlign: "center", display: "block", marginTop: "5px" }}
-        to={"/signin"}
-      >
-        {" "}
-        SIGN IN{" "}
-      </Link>
-    </div> */}
       </div>
     </>
   );
