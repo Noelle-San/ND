@@ -32,7 +32,7 @@ const AddProduct = () => {
     const [inpval, setINP] = useState({
         name: "",
         category: "",
-        img: "https://i.ibb.co/DVP7qqR/iphone-14-finish-select-202209-6-1inch-blue-removebg-preview.png",
+        img: "https://i.ibb.co/x675r39/favpng-box-product-carton-vector-graphics.png",
         price: "",
         creationdate: "",
         expiredate: ""
